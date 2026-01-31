@@ -128,5 +128,21 @@ ES6 Features are used in React codebase
   console.log(add(5,3));
   console.log(subtract(5,3));
 
-  
+
+  Task Manager Application
+  1. Showing a list of tasks 
+  2. Adding a new task 
+  3. Deleting a task
+  4. Marking a task as completed
+  5. Filtering tasks based on their status (all, completed, pending)
+  6. Storing tasks in local storage to persist data across page reloads
+
+
+  Reconciliation Algorithm in React
+  1. When the state of a component changes, React creates a new Virtual DOM tree.
+  2. It then compares this new tree with the previous Virtual DOM tree using a diffing algorithm.
+  3. React identifies the differences (or "diffs") between the two trees.
+  4. Based on these differences, React determines the minimal set of changes needed to update the actual DOM.
+  5. Finally, React applies these changes to the real DOM in an efficient manner, minimizing reflows and repaints.
+
 */
