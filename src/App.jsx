@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useId, useState } from "react";
 import AddTask from "./components/AddTask";
 import TaskList from "./components/TaskList";
 
@@ -23,6 +23,23 @@ const App = () => {
   ];
 
   const [tasks, setTasks] = useState(taskList);
+  const id = useId();
+
+  console.log("Generated ID:", id);
+  useEffect(() => {
+    // fetch("https://jsonplaceholder.typicode.com/todos?_limit=5")
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     const fetchedTasks = data.map((item) => ({
+    //       id: item.id,
+    //       name: item.title,
+    //       completed: item.completed,
+    //     }));
+    //     setTasks(fetchedTasks);
+    //   })
+    //   .catch((error) => console.error("Error fetching tasks:", error));
+    console.log("Current tasks:", tasks);
+  },[tasks]);
 
   const handleAddTask = (task) => {
     console.log("Adding task:", task);
