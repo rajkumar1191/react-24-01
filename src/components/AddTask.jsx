@@ -1,9 +1,10 @@
-import { useId, useReducer, useRef, useState } from "react";
+import React, { useContext, useReducer, useRef } from "react";
+import { TaskContext } from "../context/TaskContext";
 
 const initialState = {
   name: "",
-  id: "",
-  completed: false,
+  // id: "",
+  // completed: false,
   error: "",
 };
 
@@ -20,14 +21,17 @@ const reducerFn = (state, action) => {
   }
 };
 
-const AddTask = ({ addTask }) => {
+const AddTask = () => {
   const nameRef = useRef();
-  const idRef = useRef();
+  // const idRef = useRef();
+
+  const { addTask } = useContext(TaskContext)
+
   // const [taskName, setTaskName] = useState("");
   const [state, dispatch] = useReducer(reducerFn, initialState);
-  const id = useId();
+  // const id = useId();
 
-  console.log("Generated ID Add Task:", id);
+  // console.log("Generated ID Add Task:", id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,21 +41,21 @@ const AddTask = ({ addTask }) => {
       return;
     }
 
-    if (!state.id.trim()) {
-      dispatch({ type: "SET_ERROR", value: "Task ID cannot be empty" });
-      idRef.current.focus();
-      return;
-    }
+    // if (!state.id.trim()) {
+    //   dispatch({ type: "SET_ERROR", value: "Task ID cannot be empty" });
+    //   idRef.current.focus();
+    //   return;
+    // }
 
-    if (state.completed === "") {
-      dispatch({
-        type: "SET_ERROR",
-        value: "Please specify if the task is completed or not",
-      });
-      return;
-    }
+    // if (state.completed === "") {
+    //   dispatch({
+    //     type: "SET_ERROR",
+    //     value: "Please specify if the task is completed or not",
+    //   });
+    //   return;
+    // }
 
-    addTask(state);
+    addTask(state.name);
     dispatch({ type: "RESET" });
   };
 
@@ -74,7 +78,7 @@ const AddTask = ({ addTask }) => {
           ref={nameRef}
         />
 
-        <input
+        {/* <input
           type="text"
           value={state.id}
           onChange={(e) =>
@@ -103,7 +107,7 @@ const AddTask = ({ addTask }) => {
 
             // ref={ref}
           />
-        </label>
+        </label> */}
 
         <button type="submit">Add Task</button>
       </form>
@@ -111,4 +115,4 @@ const AddTask = ({ addTask }) => {
   );
 };
 
-export default AddTask;
+export default React.memo(AddTask);
