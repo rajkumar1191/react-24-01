@@ -3,9 +3,8 @@ import { TaskContext } from "../context/TaskContext";
 import Tasks from "./Tasks";
 
 const TaskList = ({ title }) => {
-  // console.log(tasks);
   const { tasks, toggleTask, deleteTask } = useContext(TaskContext);
-
+  console.log("tasks",tasks)
   return (
     <div>
       <h2>{title}</h2>
@@ -19,6 +18,7 @@ const TaskList = ({ title }) => {
           />
         ))}
       </ul>
+      {tasks.length == 0 && <h3>No task found</h3>}
     </div>
   );
 };

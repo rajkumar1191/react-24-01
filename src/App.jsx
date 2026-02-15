@@ -5,6 +5,10 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import NavBar from "./components/Navbar";
 import Login from "./components/Login";
+import TaskDetail from "./components/TaskDetail";
+import ProtectedRoute from "./components/ProtectedRoute";
+import TaskViaAPI from "./components/TasksViaAPI";
+import TasksViaRedux from "./components/TasksViaRedux";
 
 const App = () => {
   // const title = "Your Tasks";
@@ -95,6 +99,9 @@ const App = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/add" element={<AddTask />} />
         <Route path="/tasks" element={<TaskList />} />
+        <Route path="/tasksbyapi" element={<TaskViaAPI />} />
+        <Route path="/tasksbyredux" element={<TasksViaRedux />} />
+        <Route path="/task/:id" element={<TaskDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

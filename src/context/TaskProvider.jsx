@@ -1,8 +1,4 @@
-import React, {
-  useReducer,
-  useMemo,
-  useCallback,
-} from "react";
+import React, { useReducer, useMemo, useCallback } from "react";
 import { TaskContext } from "./TaskContext";
 
 const initialState = {
@@ -12,7 +8,7 @@ const initialState = {
 const taskReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TASK":
-      console.log("add task", action.payload)
+      console.log("add task", action.payload);
       return { ...state, tasks: [...state.tasks, action.payload] };
     case "TOGGLE_TASK":
       return {
@@ -26,6 +22,11 @@ const taskReducer = (state, action) => {
         ...state,
         tasks: state.tasks.filter((task) => task.id !== action.payload),
       };
+    // case "FIND_TASK":
+    //   return {
+    //     ...state,
+    //     tasks: state.tasks.filter((task) => task.id !== action.payload),
+    //   };
     default:
       return state;
   }
@@ -59,6 +60,13 @@ export const TaskProvider = ({ children }) => {
     });
   }, []);
 
+  // const findTask = useCallback((id) => {
+  //   dispatch({
+  //     type: "FIND_TASK",
+  //     payload: id,
+  //   });
+  // }, []);
+
   const value = useMemo(() => {
     return {
       tasks: state.tasks,
@@ -68,7 +76,5 @@ export const TaskProvider = ({ children }) => {
     };
   }, [state.tasks, addTask, deleteTask, toggleTask]);
 
-  return (
-    <TaskContext.Provider value={value}>{children}</TaskContext.Provider>
-  )
+  return <TaskContext.Provider value={value}>{children}</TaskContext.Provider>;
 };
