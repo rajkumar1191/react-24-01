@@ -11,7 +11,7 @@ const Login = () => {
 
   return (
     <div>
-      <button onClick={() => handleLogin()}>Login</button>
+      <button onClick={handleLogin}>Login</button>
     </div>
   );
 };

@@ -188,4 +188,9 @@ ES6 Features are used in React codebase
 
 
   parent component -> child component -> grandchild component -> great-grandchild component -> prop drilling
+
+
+  npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
+
+
 */
